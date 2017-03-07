@@ -1,4 +1,4 @@
-FROM       ubuntu:16.04
+FROM       ubuntu:17.04
 MAINTAINER Aleksandar Diklic "https://github.com/rastasheep"
 
 RUN apt-get update
@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
-RUN echo 'root:ylk111111' |chpasswd
+RUN echo 'root:root' |chpasswd
 
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
@@ -23,11 +23,11 @@ RUN apt-get update && apt-get install m2crypto git vim  mtr vnstat supervisor cu
 
 RUN apt-get install firefox lxde-core lxterminal tightvncserver xrdp proxychains cpulimit flashplugin-nonfree tinyproxy -y
 
-RUN wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.9/linux-headers-4.9.9-040909_4.9.9-040909.201702090333_all.deb
-RUN wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.9/linux-headers-4.9.9-040909-generic_4.9.9-040909.201702090333_amd64.deb
-RUN wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.9/linux-image-4.9.9-040909-generic_4.9.9-040909.201702090333_amd64.deb
-RUN dpkg -i *.deb
-RUN update-grub
+#RUN wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.9/linux-headers-4.9.9-040909_4.9.9-040909.201702090333_all.deb
+#RUN wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.9/linux-headers-4.9.9-040909-generic_4.9.9-040909.201702090333_amd64.deb
+#RUN wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.9/linux-image-4.9.9-040909-generic_4.9.9-040909.201702090333_amd64.deb
+#RUN dpkg -i *.deb
+#RUN update-grub
 
 # download extra
 RUN wget https://addons.mozilla.org/firefox/downloads/latest/vagex-firefox-add-on/addon-321174-latest.xpi \
